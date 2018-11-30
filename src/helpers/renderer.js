@@ -5,8 +5,12 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import Routes from '../client/Routes';
 
-
 export default (req, store) => {
+  /**
+   * Use StaticRouter and renderRoutes to get requested path and
+   * render the current routes component. Pass current store 
+   * state to provider
+   */
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>

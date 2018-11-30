@@ -7,6 +7,11 @@ class UsersList extends Component {
     this.props.fetchUsers();
   }
 
+  /**
+   * Map over users array and construct 
+   * JSX markup for user list
+   * @return {JSX}
+   */
   renderUsers() {
     return this.props.users.map(user => {
       return <li key={user.id}>{user.name}</li>
@@ -25,14 +30,25 @@ class UsersList extends Component {
   }
 }
 
+/**
+ * map the store state to component props for use.
+ * @param  [Array] state
+ * @return {Object}
+ */
 function mapStateToProps(state) {
+  console.log(state.users[0]);
   return { users: state.users };
 }
 
-function loadData() {
-  console.log('Im trying to load some data');
+/**
+ * Recieve the server side store, then manually 
+ * dispatch the fetchUsers action creator.
+ * @param  {Object} store 
+ * @return {Promise}
+ */
+export function loadData(store) {
+  return store.dispatch(fetchUsers());
 }
 
-export { loadData };
 export default connect(mapStateToProps, { fetchUsers })(UsersList);
 
