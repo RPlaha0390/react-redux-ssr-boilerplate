@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 /**
  * Declare types 
  */
@@ -8,8 +6,8 @@ export const FETCH_USERS = 'fetch_users';
 /**
  * Action creators
  */
-export const fetchUsers = () => async dispatch => {
-  const res = await axios.get('http://react-ssr-api.herokuapp.com/users')
+export const fetchUsers = () => async (dispatch, getState, api) => {
+  const res = await api.get('/users')
 
   dispatch({
     type: FETCH_USERS,
