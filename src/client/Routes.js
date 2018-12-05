@@ -6,27 +6,27 @@ import AdminsList from './containers/AdminsList';
 import NotFound from './components/NotFound';
 
 export default [
-	{
-		...App,
-		routes: [
-			{
-				path: '/',
-				...Home,
-				exact: true
-			},
+  {
+    ...App,
+    routes: [
+      {
+        path: '/',
+        ...Home,
+        exact: true
+      },
       {
         ...AdminsList,
         path: '/admins'
       },
-			{
-				...UsersList,
-				path: '/users',
-			},
+      {
+        ...UsersList,
+        path: '/users',
+      },
       {
         ...NotFound
       }
-		]
-	}
+    ]
+  }
 ];
 
 

@@ -36,6 +36,24 @@ app.get('*', (req, res) => {
    */
   const promises = matchRoutes(Routes, req.path).map(({ route }) => {
     return route.loadData ? route.loadData(store) : null;
+  })
+  /**
+   * NB: The Map function below is designed to handle errors 
+   * for the Promise.all call.
+   * 
+   * Chain a map function to the above promises. If it is a promise then wrap
+   * it with a new promise and always resolve it. 
+   * Then pass that off to Promise.all
+   * @param  {Promise}  promise
+   * @return [{Promise}]
+   */
+  .map(promise => {
+    console.log(promise);
+    if (promise) {
+      return new Promise((resolve, reject) => {
+        promise.then(resolve).catch(resolve);
+      });
+    }
   });
 
   /**
