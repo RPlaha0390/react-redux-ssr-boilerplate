@@ -4,7 +4,7 @@ import React from 'react';
  * Use destructuring assignment to pull staticContext
  * out of props. Set staticContext's default value to 
  * an empty object
- * @param  {Object} staticContext
+ * @param  {Object} props
  * @return {JSX}
  */
 const NotFound = ({ staticContext = {} }) => {
