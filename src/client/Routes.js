@@ -2,6 +2,7 @@ import React from 'react';
 import App from './App';
 import Home from './containers/Home';
 import UsersList from './containers/UsersList';
+import NotFound from './components/NotFound';
 
 export default [
 	{
@@ -15,7 +16,10 @@ export default [
 			{
 				...UsersList,
 				path: '/users',
-			}
+			},
+      {
+        ...NotFound
+      }
 		]
 	}
 ];

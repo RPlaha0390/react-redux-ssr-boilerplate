@@ -6,7 +6,7 @@ const Header = ({ auth }) => {
   console.log('My auth status is', auth);
 
   const authButton = auth ? (
-    <a href="/api/logout">Login</a>
+    <a href="/api/logout">Logout</a>
   ) : (
     <a href="/api/auth/google">Login</a>
   );

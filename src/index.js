@@ -44,7 +44,19 @@ app.get('*', (req, res) => {
    * @param  [{Promise}]
    */
   Promise.all(promises).then(() => {
-    res.send(renderer(req, store));
+    const context = {};
+    const content = renderer(req, store, context);
+
+    /**
+     * Check if context has property notFound.
+     * If it's true then set response to 404
+     * @param  {Boolean}
+     */
+    if (context.notFound) {
+      res.status(404);
+    }
+
+    res.send(content);
   });
 });
 
