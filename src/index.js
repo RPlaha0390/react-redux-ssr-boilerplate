@@ -48,7 +48,6 @@ app.get('*', (req, res) => {
    * @return [{Promise}]
    */
   .map(promise => {
-    console.log(promise);
     if (promise) {
       return new Promise((resolve, reject) => {
         promise.then(resolve).catch(resolve);
@@ -64,6 +63,10 @@ app.get('*', (req, res) => {
   Promise.all(promises).then(() => {
     const context = {};
     const content = renderer(req, store, context);
+
+    if (context.url) {
+      return res.redirect(301, context.url);
+    }
 
     /**
      * Check if context has property notFound.
